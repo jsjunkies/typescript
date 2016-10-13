@@ -1,0 +1,13 @@
+var menuData=[{
+  "type":"docx",
+  "menuItems":["copy", "open","delete"]
+},
+{
+  "type":"pdf",
+  "menuItems":["copy", "open","delete"]
+},
+{
+  "type":"zip",
+  "menuItems":["copy", "open","delete","extract"]
+}
+]

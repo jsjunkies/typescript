@@ -1,3 +1,16 @@
+var menuData = [{
+        "type": "docx",
+        "menuItems": ["copy", "open", "delete"]
+    },
+    {
+        "type": "pdf",
+        "menuItems": ["copy", "open", "delete"]
+    },
+    {
+        "type": "zip",
+        "menuItems": ["copy", "open", "delete", "extract"]
+    }
+];
 var demoClass = (function () {
     function demoClass(elements) {
         this.elements = elements;
@@ -7,6 +20,10 @@ var demoClass = (function () {
             event.preventDefault();
             var fileName = $(event.target).html();
             var fileType = $(event.target).attr('data-type');
+            var menuItems = $.map(menuData, function (k, v) {
+                return k.type == fileType ? k.menuItems : [];
+            });
+            console.log(menuItems);
             console.log("File Name = " + fileName + " :: File Type = " + fileType);
         });
     };

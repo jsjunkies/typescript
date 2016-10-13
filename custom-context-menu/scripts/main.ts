@@ -1,9 +1,17 @@
 //// <reference path="../typings/jquery.d.ts" />
-interface docFile{
-  read:string;
-  open:string;
-  open:string;
+var menuData=[{
+  "type":"docx",
+  "menuItems":["copy", "open","delete"]
+},
+{
+  "type":"pdf",
+  "menuItems":["copy", "open","delete"]
+},
+{
+  "type":"zip",
+  "menuItems":["copy", "open","delete","extract"]
 }
+]
 class demoClass{
   elements:{}
   constructor(elements:{}){
@@ -14,6 +22,10 @@ class demoClass{
       event.preventDefault();
       var fileName = $(event.target).html();
       var fileType = $(event.target).attr('data-type');
+      var menuItems=$.map(menuData, function(k,v){
+        return k.type==fileType? k.menuItems :[]}
+      );
+      console.log(menuItems);
       console.log("File Name = "+fileName+ " :: File Type = "+fileType );
     })
   }
@@ -29,7 +41,7 @@ class demoClass{
 }
 
 function upload(){
-  var fileList=document.getElementById('uploader').files;
+  var fileList=(<HTMLInputElement>document.getElementById('uploader')).files;
   var a=new demoClass(fileList);
   a.uploadFile(a.addContextMenu);
 }
