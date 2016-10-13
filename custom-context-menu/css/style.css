@@ -1,0 +1,12 @@
+#fileContainer{
+  height:auto;
+  min-height:100px;
+  width:500px;
+  border:1px solid gainsboro;
+  margin-top: 20px;
+}
+.fileDetails{
+  display: block;
+  padding: 10px;
+  text-align: justify;
+}
