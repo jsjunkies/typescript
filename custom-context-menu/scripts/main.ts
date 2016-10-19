@@ -1,7 +1,7 @@
-//// <reference path="../typings/jquery.d.ts" />
+////<reference path="../typings/jquery.d.ts" />
 var menuData=[{
   "type":"docx",
-  "menuItems":["copy", "open","delete"]
+  "menuItems":["copy", "open","delete", "edit"]
 },
 {
   "type":"pdf",
@@ -17,7 +17,11 @@ class demoClass{
   constructor(elements:{}){
     this.elements=elements;
   }
-  addContextMenu(){
+  removeContextMenu(){
+    $('.fileDetails').off('contextmenu');
+  }
+  addContextMenu(callback){
+    $('.fileDetails').off('contextmenu');
     $('.fileDetails').on('contextmenu', function(event){
       event.preventDefault();
       var fileName = $(event.target).html();
@@ -28,6 +32,8 @@ class demoClass{
       console.log(menuItems);
       console.log("File Name = "+fileName+ " :: File Type = "+fileType );
     })
+    //this.removeContextMenu();
+
   }
   uploadFile(callback){
     $.each(this.elements, function(index,element){

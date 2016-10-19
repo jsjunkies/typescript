@@ -1,6 +1,6 @@
 var menuData = [{
         "type": "docx",
-        "menuItems": ["copy", "open", "delete"]
+        "menuItems": ["copy", "open", "delete", "edit"]
     },
     {
         "type": "pdf",
@@ -15,7 +15,11 @@ var demoClass = (function () {
     function demoClass(elements) {
         this.elements = elements;
     }
-    demoClass.prototype.addContextMenu = function () {
+    demoClass.prototype.removeContextMenu = function () {
+        $('.fileDetails').off('contextmenu');
+    };
+    demoClass.prototype.addContextMenu = function (callback) {
+        $('.fileDetails').off('contextmenu');
         $('.fileDetails').on('contextmenu', function (event) {
             event.preventDefault();
             var fileName = $(event.target).html();
